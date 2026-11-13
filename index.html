@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Till alerts from store cameras: working demo</title>
+<link rel="preload" href="archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317212b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23f2a33a'/%3E%3C/svg%3E">
+  <script type="module" crossorigin src="./assets/index-BI8ZTFf2.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DpoQMhcH.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1>Alerts the till before the shopper reaches the door</h1>
+    <p class="lede">RTSP in, crash-safe recording, pose and object detection, and an event engine tuned on the number that decides whether cashiers keep looking: false alerts per camera-hour. Everything on this page runs here or was measured.</p>
+  </div>
+</header>
+
+<main>
+<section class="live wrap" aria-label="Live demo">
+  <div class="stage">
+    <div class="feed">
+      <div class="feed-bar"><span class="cam-name">Aisle 3, camera 2</span><span id="clock" class="cam-clock">00:00</span></div>
+      <canvas id="feed" width="960" height="540" aria-label="Simulated store camera with shoppers, items and detections"></canvas>
+      <div class="legend-row" aria-hidden="true">
+        <span><i class="sw sw-hold"></i>hand holding an item</span>
+        <span><i class="sw sw-zone"></i>hand at a hiding place</span>
+        <span><i class="sw sw-box"></i>detector boxes</span>
+        <span><i class="sw sw-alert"></i>alert</span>
+      </div>
+    </div>
+    <aside class="tablet" aria-label="Cashier tablet">
+      <div class="tablet-head"><strong>Till 2</strong><span id="tabletStatus">live</span></div>
+      <div id="alerts" class="tablet-list"><p class="empty">Alerts appear here. Tap Confirm or Dismiss to see what really happened.</p></div>
+    </aside>
+  </div>
+
+  <div class="controls">
+    <fieldset>
+      <legend>Scenario</legend>
+      <div class="seg" id="scenario">
+        <button data-v="busy" class="on">Busy aisle</button>
+        <button data-v="thieves">Concealments only</button>
+        <button data-v="phones">Phones and wallets</button>
+        <button data-v="fidget">Hands in pockets</button>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Engine</legend>
+      <div class="seg" id="tier">
+        <button data-v="0"><i class="sw s1"></i>Wrist rule</button>
+        <button data-v="1"><i class="sw s2"></i>Product in hand</button>
+        <button data-v="2" class="on"><i class="sw s3"></i>Full engine</button>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Camera</legend>
+      <div class="seg" id="angle">
+        <button data-v="eye" class="on">Eye level</button>
+        <button data-v="ceiling">Ceiling</button>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Speed</legend>
+      <div class="seg" id="speed">
+        <button data-v="1">1×</button>
+        <button data-v="3" class="on">3×</button>
+        <button data-v="8">8×</button>
+        <button data-v="0">Pause</button>
+      </div>
+    </fieldset>
+  </div>
+  <dl class="tally" id="tally"></dl>
+  <p class="note">Shoppers, items and detector output are simulated: skeletons get keypoint noise, wrists vanish against the body, phones are sometimes boxed as products, and tracks break. The engine is the same code that was benchmarked below and ported to Python.</p>
+</section>
+
+<section class="wrap block" id="results">
+  <h2>Held-out results</h2>
+  <p class="intro">Each engine was tuned to catch 85% of concealments on 30 simulated camera-hours, then run on 60 different camera-hours it had never seen.</p>
+  <div id="tierTable" class="table-wrap"></div>
+  <div class="two">
+    <figure class="chart" id="curve"><figcaption>Concealments caught against false alerts per camera-hour, held-out data. Up and left is better; the horizontal axis is logarithmic.</figcaption></figure>
+    <div class="aside-text" id="curveText"></div>
+  </div>
+</section>
+
+<section class="wrap block" id="improve">
+  <h2>What makes the models better, measured</h2>
+  <p class="intro">One change at a time, Full engine, same held-out hours.</p>
+  <div id="ablation" class="table-wrap"></div>
+  <div class="two">
+    <figure class="chart" id="weeks"><figcaption>Learning from cashier taps: a model trained on staged footage only, retrained each week on the alerts cashiers confirm or dismiss (5% of taps deliberately wrong).</figcaption></figure>
+    <div class="aside-text">
+      <h3>The plan for your footage</h3>
+      <ol class="steps">
+        <li><strong>Label a few hours from your cameras.</strong> Products in hand, phones, wallets, own bags, baskets, at your camera heights. The product detector and the pose model are fine-tuned on these.</li>
+        <li><strong>Collect hard negatives on purpose.</strong> Phones going back into pockets and wallets into bags are the alerts that wear cashiers out. Training without them doubles false alerts in the table above.</li>
+        <li><strong>Fine-tune for the ceiling angle if that is what you have.</strong> From above, wrists are hidden against the body more often; adapting to that angle is measured in the table.</li>
+        <li><strong>Let the Confirm and Dismiss taps retrain the event model weekly.</strong> Each tap is a label, stored with the clip and its features.</li>
+        <li><strong>Judge every change by false alerts per camera-hour at a fixed catch rate</strong>, on store days the model never trained on.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="wrap block" id="stream">
+  <h2>RTSP ingest and recording, measured</h2>
+  <p class="intro">A synthetic camera burns its frame number into every frame, so each test counts exactly which frames arrived, were recorded or were lost. Loopback on this machine: numbers include H.264 encode, RTSP, relay and decode, not a real camera's encoder or your network.</p>
+  <div class="two">
+    <figure class="chart" id="latency"><figcaption>Camera-to-decoded-frame latency by reader setting, 15 fps, 2 s keyframe interval. Bars are medians; the tick is the 95th percentile.</figcaption></figure>
+    <figure class="chart" id="crash"><figcaption>Seconds of video lost when the recorder is killed mid-segment, five kills each.</figcaption></figure>
+  </div>
+  <h3 class="sub">Fault injection: four recorders, same camera, same faults</h3>
+  <div id="faults" class="table-wrap"></div>
+  <div id="streamFacts" class="facts"></div>
+</section>
+
+<section class="wrap block" id="arch">
+  <h2>How the pieces fit</h2>
+  <figure class="diagram">
+    <svg viewBox="0 0 1100 365" role="img" aria-labelledby="archTitle">
+      <title id="archTitle">Each camera's main stream goes straight to the recorder, which writes flushed fragmented MP4. Its substream goes through a MediaMTX relay to a low-latency reader, the detectors, the tracker and the event engine, which pushes alerts with a clip to the till tablet. Cashier taps become labels for weekly retraining.</title>
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="arrowhead"/></marker></defs>
+      <g class="node"><rect x="10" y="40" width="150" height="66" rx="8"/><text x="85" y="68">IP cameras</text><text x="85" y="88" class="small">main + substream, RTSP</text></g>
+      <g class="node"><rect x="210" y="40" width="170" height="66" rx="8"/><text x="295" y="68">MediaMTX relay</text><text x="295" y="88" class="small">substream fan-out, live view</text></g>
+      <g class="node"><rect x="210" y="170" width="170" height="66" rx="8"/><text x="295" y="198">Recorder</text><text x="295" y="218" class="small">main stream, fMP4 flushed</text></g>
+      <g class="node"><rect x="210" y="262" width="170" height="54" rx="8"/><text x="295" y="294">Disk, then S3 or MinIO</text></g>
+      <g class="node"><rect x="430" y="40" width="160" height="66" rx="8"/><text x="510" y="68">Low-latency reader</text><text x="510" y="88" class="small">PyAV, substream, 10 fps</text></g>
+      <g class="node"><rect x="640" y="40" width="170" height="66" rx="8"/><text x="725" y="68">Detectors</text><text x="725" y="88" class="small">YOLOX boxes, RTMPose</text></g>
+      <g class="node"><rect x="640" y="170" width="170" height="66" rx="8"/><text x="725" y="198">Tracker + event engine</text><text x="725" y="218" class="small">carry, hide, gone</text></g>
+      <g class="node hot"><rect x="880" y="170" width="200" height="66" rx="8"/><text x="980" y="198">Alert service</text><text x="980" y="218" class="small">WebSocket to the till, clip</text></g>
+      <g class="node"><rect x="880" y="40" width="200" height="66" rx="8"/><text x="980" y="68">Till tablet</text><text x="980" y="88" class="small">Confirm or Dismiss</text></g>
+      <g class="node"><rect x="640" y="262" width="170" height="54" rx="8"/><text x="725" y="294">Labels, weekly retrain</text></g>
+      <path d="M160 73 H205" marker-end="url(#ar)"/><path d="M85 106 V203 H205" marker-end="url(#ar)"/><path d="M295 236 V257" marker-end="url(#ar)"/>
+      <path d="M380 73 H425" marker-end="url(#ar)"/><path d="M590 73 H635" marker-end="url(#ar)"/><path d="M725 106 V165" marker-end="url(#ar)"/>
+      <path d="M810 203 H875" marker-end="url(#ar)"/><path d="M980 170 V111" marker-end="url(#ar)"/>
+      <path d="M1080 73 H1094 V289 H815" marker-end="url(#ar)"/><path d="M725 262 V241" marker-end="url(#ar)"/>
+      <path d="M380 222 H560 V345 H1040 V241" class="dash" marker-end="url(#ar)"/>
+      <text x="800" y="338" class="small label">clip cut from the recording</text>
+      <text x="925" y="282" class="small label">taps become labels</text>
+    </svg>
+  </figure>
+  <div class="cols3">
+    <div><h3>Models and licences</h3><p>Ultralytics YOLO is AGPL-3.0; shipping it in a closed commercial system needs their Enterprise licence. YOLOX and MMPose (RTMPose) are Apache-2.0. On this machine's CPU: <span id="yoloxFacts">…</span></p></div>
+    <div><h3>Privacy</h3><p>No face recognition and no identity. The engine sees skeletons and boxes; the tablet shows a short clip of the moment. Retention and signage follow your jurisdiction.</p></div>
+    <div><h3>Comparable products</h3><p><a href="https://veesion.io" rel="noopener">Veesion</a> sells gesture-based shoplifting alerts on existing CCTV. <a href="https://frigate.video" rel="noopener">Frigate</a> is an open-source NVR with real-time object detection. This build combines both halves, on hardware and code you own.</p></div>
+  </div>
+</section>
+
+<section class="wrap block" id="limits">
+  <h2>Measured and not measured</h2>
+  <div class="two">
+    <div><h3>Measured here</h3><ul id="measured" class="checks"></ul></div>
+    <div><h3>Not measured</h3><ul id="notMeasured" class="checks no"></ul></div>
+  </div>
+  <p class="download"><a href="python-service.zip" download>Download the Python service</a>: recorder, low-latency reader, event engine, alert service, cashier page and the benchmarks behind this page.</p>
+</section>
+</main>
+<footer class="wrap foot">Built as a working proposal. Numbers regenerate from the scripts in the download.</footer>
+</body>
+</html>

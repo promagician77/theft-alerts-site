@@ -1,0 +1,1830 @@
+{
+ "latency": {
+  "seconds_per_config": 30.0,
+  "fps": 15.0,
+  "gop_s": 2.0,
+  "resolution": "960x540",
+  "configs": [
+   {
+    "key": "direct_default",
+    "label": "ffmpeg defaults, camera direct",
+    "frames": 406,
+    "p50_ms": 270.69127559661865,
+    "p95_ms": 272.56709337234497,
+    "p99_ms": 274.5798945426941,
+    "max_ms": 277.31966972351074,
+    "join_s": 2.5032360553741455,
+    "delivered_pct": 100.0
+   },
+   {
+    "key": "direct_lowlat",
+    "label": "nobuffer + low_delay + no probing",
+    "frames": 406,
+    "p50_ms": 136.80529594421387,
+    "p95_ms": 138.37754726409912,
+    "p99_ms": 139.31140899658203,
+    "max_ms": 143.7089443206787,
+    "join_s": 1.7171831130981445,
+    "delivered_pct": 100.0
+   },
+   {
+    "key": "direct_lowlat_1t",
+    "label": "+ single-thread decode",
+    "frames": 406,
+    "p50_ms": 137.09986209869385,
+    "p95_ms": 138.74900341033936,
+    "p99_ms": 140.55633544921875,
+    "max_ms": 142.81797409057617,
+    "join_s": 0.6638693809509277,
+    "delivered_pct": 100.0
+   },
+   {
+    "key": "relay_lowlat_1t",
+    "label": "same, through the MediaMTX relay",
+    "frames": 406,
+    "p50_ms": 137.4424695968628,
+    "p95_ms": 139.61374759674072,
+    "p99_ms": 141.39329195022583,
+    "max_ms": 144.03796195983887,
+    "join_s": 1.5954246520996094,
+    "delivered_pct": 100.0
+   },
+   {
+    "key": "relay_pyav",
+    "label": "PyAV in-process, through the relay",
+    "frames": 408,
+    "p50_ms": 70.67906856536865,
+    "p95_ms": 72.76068925857544,
+    "p99_ms": 74.64186906814575,
+    "max_ms": 78.38797569274902,
+    "join_s": 0.46602511405944824,
+    "delivered_pct": 100.24570024570025
+   },
+   {
+    "key": "relay_udp",
+    "label": "RTP over UDP, through the relay",
+    "frames": 406,
+    "p50_ms": 137.91930675506592,
+    "p95_ms": 141.21699333190918,
+    "p99_ms": 142.73227453231812,
+    "max_ms": 146.6233730316162,
+    "join_s": 1.3310892581939697,
+    "delivered_pct": 100.0
+   }
+  ]
+ },
+ "machine": {
+  "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+  "cores": 2,
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "mediamtx": "v1.15.3"
+ },
+ "chaos": {
+  "gop_s": 2.0,
+  "segment_s": 10,
+  "fps": 15.0,
+  "run_s": 195.0,
+  "window_frames": 2686,
+  "faults": [
+   {
+    "kind": "camera_reboot",
+    "at_s": 30.02,
+    "dur_s": 6.0
+   },
+   {
+    "kind": "network_stall",
+    "at_s": 70.01,
+    "dur_s": 8.0
+   },
+   {
+    "kind": "connection_reset",
+    "at_s": 110.01,
+    "dur_s": 0.0
+   },
+   {
+    "kind": "recorder_crash",
+    "at_s": 140.0,
+    "dur_s": 0.0
+   },
+   {
+    "kind": "recorder_crash",
+    "at_s": 163.0,
+    "dur_s": 0.0
+   }
+  ],
+  "variants": [
+   {
+    "name": "ff_fmp4",
+    "label": "ffmpeg segments, fragmented MP4 (1 s fragments)",
+    "files": 20,
+    "unplayable_files": 0,
+    "duplicates": 0,
+    "recorded_pct": 92.29,
+    "faults": [
+     {
+      "kind": "camera_reboot",
+      "lost_s": 8.13,
+      "extra_s": 2.13
+     },
+     {
+      "kind": "network_stall",
+      "lost_s": 0.0,
+      "extra_s": -8.0
+     },
+     {
+      "kind": "connection_reset",
+      "lost_s": 2.13,
+      "extra_s": 2.13
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 2.27,
+      "extra_s": 2.27
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 1.27,
+      "extra_s": 1.27
+     }
+    ],
+    "unexplained_lost_s": 0.0,
+    "bytes": 11738993,
+    "gaps": [
+     {
+      "from_s": 30.05,
+      "to_s": 38.18,
+      "dur_s": 8.13
+     },
+     {
+      "from_s": 110.05,
+      "to_s": 112.18,
+      "dur_s": 2.13
+     },
+     {
+      "from_s": 139.92,
+      "to_s": 142.18,
+      "dur_s": 2.27
+     },
+     {
+      "from_s": 162.92,
+      "to_s": 164.18,
+      "dur_s": 1.27
+     }
+    ],
+    "empty_file_bytes": [],
+    "events": [
+     {
+      "t_s": 0.0,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 30.24,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 30.44,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 30.81,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 31.07,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 31.32,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 31.83,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 32.08,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 33.08,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 33.33,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 34.34,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 34.59,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 35.6,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 35.85,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 36.85,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 110.21,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 110.42,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 140.21,
+      "kind": "restart",
+      "reason": "exit:-9"
+     },
+     {
+      "t_s": 140.48,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 163.03,
+      "kind": "restart",
+      "reason": "exit:-9"
+     },
+     {
+      "t_s": 163.54,
+      "kind": "start",
+      "reason": ""
+     }
+    ]
+   },
+   {
+    "name": "ff_ts",
+    "label": "ffmpeg segments, MPEG-TS",
+    "files": 20,
+    "unplayable_files": 0,
+    "duplicates": 0,
+    "recorded_pct": 92.37,
+    "faults": [
+     {
+      "kind": "camera_reboot",
+      "lost_s": 8.13,
+      "extra_s": 2.13
+     },
+     {
+      "kind": "network_stall",
+      "lost_s": 0.0,
+      "extra_s": -8.0
+     },
+     {
+      "kind": "connection_reset",
+      "lost_s": 2.13,
+      "extra_s": 2.13
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 2.2,
+      "extra_s": 2.2
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 1.2,
+      "extra_s": 1.2
+     }
+    ],
+    "unexplained_lost_s": 0.0,
+    "bytes": 12545428,
+    "gaps": [
+     {
+      "from_s": 30.05,
+      "to_s": 38.18,
+      "dur_s": 8.13
+     },
+     {
+      "from_s": 110.05,
+      "to_s": 112.18,
+      "dur_s": 2.13
+     },
+     {
+      "from_s": 139.98,
+      "to_s": 142.18,
+      "dur_s": 2.2
+     },
+     {
+      "from_s": 162.98,
+      "to_s": 164.18,
+      "dur_s": 1.2
+     }
+    ],
+    "empty_file_bytes": [],
+    "events": [
+     {
+      "t_s": 0.0,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 30.19,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 30.4,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 30.78,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 31.03,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 31.28,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 31.78,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 32.03,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 33.03,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 33.28,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 34.28,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 34.53,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 35.53,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 35.78,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 36.78,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 110.05,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 110.25,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 140.02,
+      "kind": "restart",
+      "reason": "exit:-9"
+     },
+     {
+      "t_s": 140.27,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 163.05,
+      "kind": "restart",
+      "reason": "exit:-9"
+     },
+     {
+      "t_s": 163.55,
+      "kind": "start",
+      "reason": ""
+     }
+    ]
+   },
+   {
+    "name": "ff_mp4",
+    "label": "ffmpeg segments, plain MP4",
+    "files": 21,
+    "unplayable_files": 2,
+    "duplicates": 0,
+    "recorded_pct": 87.57,
+    "faults": [
+     {
+      "kind": "camera_reboot",
+      "lost_s": 8.13,
+      "extra_s": 2.13
+     },
+     {
+      "kind": "network_stall",
+      "lost_s": 0.0,
+      "extra_s": -8.0
+     },
+     {
+      "kind": "connection_reset",
+      "lost_s": 2.13,
+      "extra_s": 2.13
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 10.0,
+      "extra_s": 10.0
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 2.0,
+      "extra_s": 2.0
+     }
+    ],
+    "unexplained_lost_s": 0.0,
+    "bytes": 11088164,
+    "gaps": [
+     {
+      "from_s": 30.05,
+      "to_s": 38.18,
+      "dur_s": 8.13
+     },
+     {
+      "from_s": 110.05,
+      "to_s": 112.18,
+      "dur_s": 2.13
+     },
+     {
+      "from_s": 132.18,
+      "to_s": 142.18,
+      "dur_s": 10.0
+     },
+     {
+      "from_s": 162.18,
+      "to_s": 164.18,
+      "dur_s": 2.0
+     }
+    ],
+    "empty_file_bytes": [
+     262192,
+     48
+    ],
+    "events": [
+     {
+      "t_s": 0.0,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 30.21,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 30.42,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 30.8,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 31.06,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 31.31,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 31.82,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 32.07,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 33.07,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 33.32,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 34.32,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 34.57,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 35.58,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 35.83,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 36.83,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 110.21,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 110.41,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 140.19,
+      "kind": "restart",
+      "reason": "exit:-9"
+     },
+     {
+      "t_s": 140.44,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 163.2,
+      "kind": "restart",
+      "reason": "exit:-9"
+     },
+     {
+      "t_s": 163.7,
+      "kind": "start",
+      "reason": ""
+     }
+    ]
+   },
+   {
+    "name": "mtx_fmp4",
+    "label": "MediaMTX relay recording, fMP4 (1 s parts)",
+    "files": 19,
+    "unplayable_files": 0,
+    "duplicates": 0,
+    "recorded_pct": 88.09,
+    "faults": [
+     {
+      "kind": "camera_reboot",
+      "lost_s": 10.2,
+      "extra_s": 4.2
+     },
+     {
+      "kind": "network_stall",
+      "lost_s": 0.0,
+      "extra_s": -8.0
+     },
+     {
+      "kind": "connection_reset",
+      "lost_s": 6.2,
+      "extra_s": 6.2
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 2.93,
+      "extra_s": 2.93
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 2.0,
+      "extra_s": 2.0
+     }
+    ],
+    "unexplained_lost_s": 0.0,
+    "bytes": 10976594,
+    "gaps": [
+     {
+      "from_s": 29.98,
+      "to_s": 40.18,
+      "dur_s": 10.2
+     },
+     {
+      "from_s": 109.98,
+      "to_s": 116.18,
+      "dur_s": 6.2
+     },
+     {
+      "from_s": 139.25,
+      "to_s": 142.18,
+      "dur_s": 2.93
+     },
+     {
+      "from_s": 162.18,
+      "to_s": 164.18,
+      "dur_s": 2.0
+     }
+    ],
+    "empty_file_bytes": [],
+    "events": []
+   }
+  ],
+  "clip_export": {
+   "ok": true,
+   "segments": 3,
+   "seconds": 0.074,
+   "requested_s": 15,
+   "covered": true,
+   "missing_in_window": 0,
+   "starts_early_s": 0.8,
+   "ends_late_s": 0.47,
+   "clip_frames": 245
+  },
+  "restarts": {
+   "ff_fmp4": 10,
+   "ff_ts": 10,
+   "ff_mp4": 10
+  },
+  "sent_frames": 2894
+ },
+ "gop_1": {
+  "gop_s": 1.0,
+  "segment_s": 10,
+  "fps": 15.0,
+  "run_s": 110.0,
+  "window_frames": 1411,
+  "faults": [
+   {
+    "kind": "camera_reboot",
+    "at_s": 20.02,
+    "dur_s": 6.0
+   },
+   {
+    "kind": "connection_reset",
+    "at_s": 50.01,
+    "dur_s": 0.0
+   },
+   {
+    "kind": "recorder_crash",
+    "at_s": 80.01,
+    "dur_s": 0.0
+   }
+  ],
+  "variants": [
+   {
+    "name": "ff_fmp4",
+    "label": "ffmpeg segments, fragmented MP4 (1 s fragments)",
+    "files": 11,
+    "unplayable_files": 0,
+    "duplicates": 0,
+    "recorded_pct": 88.8,
+    "faults": [
+     {
+      "kind": "camera_reboot",
+      "lost_s": 7.13,
+      "extra_s": 1.13
+     },
+     {
+      "kind": "connection_reset",
+      "lost_s": 1.13,
+      "extra_s": 1.13
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 2.27,
+      "extra_s": 2.27
+     }
+    ],
+    "unexplained_lost_s": 0.0,
+    "bytes": 9756843,
+    "gaps": [
+     {
+      "from_s": 20.05,
+      "to_s": 27.19,
+      "dur_s": 7.13
+     },
+     {
+      "from_s": 50.05,
+      "to_s": 51.19,
+      "dur_s": 1.13
+     },
+     {
+      "from_s": 79.92,
+      "to_s": 82.19,
+      "dur_s": 2.27
+     }
+    ],
+    "empty_file_bytes": [],
+    "events": [
+     {
+      "t_s": 0.0,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 20.09,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 20.35,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 20.83,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 21.34,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 21.59,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 22.6,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 22.85,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 23.86,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 24.11,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 25.11,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 25.36,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 26.36,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 50.05,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 51.05,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 80.07,
+      "kind": "restart",
+      "reason": "exit:-9"
+     },
+     {
+      "t_s": 81.08,
+      "kind": "start",
+      "reason": ""
+     }
+    ]
+   },
+   {
+    "name": "ff_ts",
+    "label": "ffmpeg segments, MPEG-TS",
+    "files": 11,
+    "unplayable_files": 0,
+    "duplicates": 0,
+    "recorded_pct": 87.81,
+    "faults": [
+     {
+      "kind": "camera_reboot",
+      "lost_s": 7.13,
+      "extra_s": 1.13
+     },
+     {
+      "kind": "connection_reset",
+      "lost_s": 2.13,
+      "extra_s": 2.13
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 2.2,
+      "extra_s": 2.2
+     }
+    ],
+    "unexplained_lost_s": 0.0,
+    "bytes": 10268936,
+    "gaps": [
+     {
+      "from_s": 20.05,
+      "to_s": 27.19,
+      "dur_s": 7.13
+     },
+     {
+      "from_s": 50.05,
+      "to_s": 52.19,
+      "dur_s": 2.13
+     },
+     {
+      "from_s": 79.99,
+      "to_s": 82.19,
+      "dur_s": 2.2
+     }
+    ],
+    "empty_file_bytes": [],
+    "events": [
+     {
+      "t_s": 0.01,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 20.09,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 20.34,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 20.81,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 21.31,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 21.56,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 22.56,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 22.81,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 23.81,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 24.06,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 25.06,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 25.31,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 26.32,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 50.24,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 51.24,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 80.06,
+      "kind": "restart",
+      "reason": "exit:-9"
+     },
+     {
+      "t_s": 81.06,
+      "kind": "start",
+      "reason": ""
+     }
+    ]
+   },
+   {
+    "name": "ff_mp4",
+    "label": "ffmpeg segments, plain MP4",
+    "files": 11,
+    "unplayable_files": 1,
+    "duplicates": 0,
+    "recorded_pct": 80.58,
+    "faults": [
+     {
+      "kind": "camera_reboot",
+      "lost_s": 7.13,
+      "extra_s": 1.13
+     },
+     {
+      "kind": "connection_reset",
+      "lost_s": 2.13,
+      "extra_s": 2.13
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 9.0,
+      "extra_s": 9.0
+     }
+    ],
+    "unexplained_lost_s": 0.0,
+    "bytes": 9408209,
+    "gaps": [
+     {
+      "from_s": 20.05,
+      "to_s": 27.19,
+      "dur_s": 7.13
+     },
+     {
+      "from_s": 50.05,
+      "to_s": 52.19,
+      "dur_s": 2.13
+     },
+     {
+      "from_s": 73.19,
+      "to_s": 82.19,
+      "dur_s": 9.0
+     }
+    ],
+    "empty_file_bytes": [
+     524336
+    ],
+    "events": [
+     {
+      "t_s": 0.01,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 20.1,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 20.36,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 20.83,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 21.33,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 21.58,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 22.58,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 22.83,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 23.84,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 24.09,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 25.09,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 25.34,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 26.34,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 50.26,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 51.26,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 80.06,
+      "kind": "restart",
+      "reason": "exit:-9"
+     },
+     {
+      "t_s": 81.06,
+      "kind": "start",
+      "reason": ""
+     }
+    ]
+   },
+   {
+    "name": "mtx_fmp4",
+    "label": "MediaMTX relay recording, fMP4 (1 s parts)",
+    "files": 10,
+    "unplayable_files": 0,
+    "duplicates": 0,
+    "recorded_pct": 81.57,
+    "faults": [
+     {
+      "kind": "camera_reboot",
+      "lost_s": 10.2,
+      "extra_s": 4.2
+     },
+     {
+      "kind": "connection_reset",
+      "lost_s": 5.2,
+      "extra_s": 5.2
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 1.93,
+      "extra_s": 1.93
+     }
+    ],
+    "unexplained_lost_s": 0.0,
+    "bytes": 9076754,
+    "gaps": [
+     {
+      "from_s": 19.99,
+      "to_s": 30.19,
+      "dur_s": 10.2
+     },
+     {
+      "from_s": 49.99,
+      "to_s": 55.19,
+      "dur_s": 5.2
+     },
+     {
+      "from_s": 79.25,
+      "to_s": 81.19,
+      "dur_s": 1.93
+     }
+    ],
+    "empty_file_bytes": [],
+    "events": []
+   }
+  ],
+  "clip_export": {
+   "ok": true,
+   "segments": 2,
+   "seconds": 0.089,
+   "requested_s": 15,
+   "covered": true,
+   "missing_in_window": 0,
+   "starts_early_s": 2.8,
+   "ends_late_s": 0.4,
+   "clip_frames": 274
+  },
+  "restarts": {
+   "ff_fmp4": 8,
+   "ff_ts": 8,
+   "ff_mp4": 8
+  },
+  "sent_frames": 1621
+ },
+ "gop_4": {
+  "gop_s": 4.0,
+  "segment_s": 10,
+  "fps": 15.0,
+  "run_s": 110.0,
+  "window_frames": 1411,
+  "faults": [
+   {
+    "kind": "camera_reboot",
+    "at_s": 20.01,
+    "dur_s": 6.0
+   },
+   {
+    "kind": "connection_reset",
+    "at_s": 50.01,
+    "dur_s": 0.0
+   },
+   {
+    "kind": "recorder_crash",
+    "at_s": 80.01,
+    "dur_s": 0.0
+   }
+  ],
+  "variants": [
+   {
+    "name": "ff_fmp4",
+    "label": "ffmpeg segments, fragmented MP4 (1 s fragments)",
+    "files": 10,
+    "unplayable_files": 0,
+    "duplicates": 0,
+    "recorded_pct": 82.64,
+    "faults": [
+     {
+      "kind": "camera_reboot",
+      "lost_s": 10.07,
+      "extra_s": 4.07
+     },
+     {
+      "kind": "connection_reset",
+      "lost_s": 4.07,
+      "extra_s": 4.07
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 2.2,
+      "extra_s": 2.2
+     }
+    ],
+    "unexplained_lost_s": 0.0,
+    "bytes": 4604734,
+    "gaps": [
+     {
+      "from_s": 20.06,
+      "to_s": 30.12,
+      "dur_s": 10.07
+     },
+     {
+      "from_s": 50.06,
+      "to_s": 54.12,
+      "dur_s": 4.07
+     },
+     {
+      "from_s": 79.92,
+      "to_s": 82.12,
+      "dur_s": 2.2
+     }
+    ],
+    "empty_file_bytes": [],
+    "events": [
+     {
+      "t_s": 0.01,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 20.15,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 20.4,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 20.89,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 21.39,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 21.64,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 22.64,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 22.89,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 23.89,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 24.14,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 25.14,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 25.39,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 26.39,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 50.02,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 51.03,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 80.06,
+      "kind": "restart",
+      "reason": "exit:-9"
+     },
+     {
+      "t_s": 81.06,
+      "kind": "start",
+      "reason": ""
+     }
+    ]
+   },
+   {
+    "name": "ff_ts",
+    "label": "ffmpeg segments, MPEG-TS",
+    "files": 10,
+    "unplayable_files": 0,
+    "duplicates": 0,
+    "recorded_pct": 82.71,
+    "faults": [
+     {
+      "kind": "camera_reboot",
+      "lost_s": 10.07,
+      "extra_s": 4.07
+     },
+     {
+      "kind": "connection_reset",
+      "lost_s": 4.07,
+      "extra_s": 4.07
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 2.13,
+      "extra_s": 2.13
+     }
+    ],
+    "unexplained_lost_s": 0.0,
+    "bytes": 4986888,
+    "gaps": [
+     {
+      "from_s": 20.06,
+      "to_s": 30.12,
+      "dur_s": 10.07
+     },
+     {
+      "from_s": 50.06,
+      "to_s": 54.12,
+      "dur_s": 4.07
+     },
+     {
+      "from_s": 79.99,
+      "to_s": 82.12,
+      "dur_s": 2.13
+     }
+    ],
+    "empty_file_bytes": [],
+    "events": [
+     {
+      "t_s": 0.02,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 20.15,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 20.41,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 20.9,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 21.41,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 21.66,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 22.66,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 22.91,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 23.91,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 24.16,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 25.16,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 25.41,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 26.41,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 50.06,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 51.06,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 80.08,
+      "kind": "restart",
+      "reason": "exit:-9"
+     },
+     {
+      "t_s": 81.08,
+      "kind": "start",
+      "reason": ""
+     }
+    ]
+   },
+   {
+    "name": "ff_mp4",
+    "label": "ffmpeg segments, plain MP4",
+    "files": 10,
+    "unplayable_files": 1,
+    "duplicates": 0,
+    "recorded_pct": 76.47,
+    "faults": [
+     {
+      "kind": "camera_reboot",
+      "lost_s": 10.07,
+      "extra_s": 4.07
+     },
+     {
+      "kind": "connection_reset",
+      "lost_s": 4.07,
+      "extra_s": 4.07
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 8.0,
+      "extra_s": 8.0
+     }
+    ],
+    "unexplained_lost_s": 0.0,
+    "bytes": 4390021,
+    "gaps": [
+     {
+      "from_s": 20.06,
+      "to_s": 30.12,
+      "dur_s": 10.07
+     },
+     {
+      "from_s": 50.06,
+      "to_s": 54.12,
+      "dur_s": 4.07
+     },
+     {
+      "from_s": 74.12,
+      "to_s": 82.12,
+      "dur_s": 8.0
+     }
+    ],
+    "empty_file_bytes": [
+     262192
+    ],
+    "events": [
+     {
+      "t_s": 0.02,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 20.18,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 20.44,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 20.9,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 21.41,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 21.66,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 22.67,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 22.92,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 23.93,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 24.18,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 25.18,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 25.44,
+      "kind": "restart",
+      "reason": "exit:8"
+     },
+     {
+      "t_s": 26.47,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 50.07,
+      "kind": "restart",
+      "reason": "exit:0"
+     },
+     {
+      "t_s": 51.07,
+      "kind": "start",
+      "reason": ""
+     },
+     {
+      "t_s": 80.11,
+      "kind": "restart",
+      "reason": "exit:-9"
+     },
+     {
+      "t_s": 81.12,
+      "kind": "start",
+      "reason": ""
+     }
+    ]
+   },
+   {
+    "name": "mtx_fmp4",
+    "label": "MediaMTX relay recording, fMP4 (1 s parts)",
+    "files": 9,
+    "unplayable_files": 0,
+    "duplicates": 0,
+    "recorded_pct": 77.46,
+    "faults": [
+     {
+      "kind": "camera_reboot",
+      "lost_s": 10.13,
+      "extra_s": 4.13
+     },
+     {
+      "kind": "connection_reset",
+      "lost_s": 8.13,
+      "extra_s": 8.13
+     },
+     {
+      "kind": "recorder_crash",
+      "lost_s": 2.93,
+      "extra_s": 2.93
+     }
+    ],
+    "unexplained_lost_s": 0.0,
+    "bytes": 4259329,
+    "gaps": [
+     {
+      "from_s": 19.99,
+      "to_s": 30.12,
+      "dur_s": 10.13
+     },
+     {
+      "from_s": 49.99,
+      "to_s": 58.12,
+      "dur_s": 8.13
+     },
+     {
+      "from_s": 79.19,
+      "to_s": 82.12,
+      "dur_s": 2.93
+     }
+    ],
+    "empty_file_bytes": [],
+    "events": []
+   }
+  ],
+  "clip_export": {
+   "ok": true,
+   "segments": 2,
+   "seconds": 0.071,
+   "requested_s": 15,
+   "covered": true,
+   "missing_in_window": 0,
+   "starts_early_s": 2.87,
+   "ends_late_s": 0.47,
+   "clip_frames": 276
+  },
+  "restarts": {
+   "ff_fmp4": 8,
+   "ff_ts": 8,
+   "ff_mp4": 8
+  },
+  "sent_frames": 1620
+ },
+ "crash_flush": {
+  "fmp4_keyframe_1s": {
+   "lost_before_kill_s": [
+    1.66,
+    2.33,
+    3.91,
+    2.22,
+    3.41
+   ],
+   "max_s": 3.91
+  },
+  "fmp4_every_frame": {
+   "lost_before_kill_s": [
+    1.66,
+    2.33,
+    3.91,
+    2.35,
+    3.48
+   ],
+   "max_s": 3.91
+  },
+  "fmp4_every_frame_flush": {
+   "lost_before_kill_s": [
+    0.19,
+    0.2,
+    0.17,
+    0.15,
+    0.14
+   ],
+   "max_s": 0.2
+  },
+  "mpegts": {
+   "lost_before_kill_s": [
+    1.86,
+    2.53,
+    0.57,
+    2.75,
+    0.61
+   ],
+   "max_s": 2.75
+  },
+  "mpegts_flush": {
+   "lost_before_kill_s": [
+    0.12,
+    0.13,
+    0.11,
+    0.08,
+    0.08
+   ],
+   "max_s": 0.13
+  },
+  "mp4_plain": {
+   "lost_before_kill_s": [
+    7.3,
+    8.1,
+    9.0,
+    7.7,
+    8.6
+   ],
+   "max_s": 9.0
+  }
+ },
+ "capacity": {
+  "decode": [
+   {
+    "resolution": "1920x1080",
+    "decode_fps_one_core": 173.4,
+    "cameras_per_core_at_15fps": 11.6
+   },
+   {
+    "resolution": "960x540",
+    "decode_fps_one_core": 475.9,
+    "cameras_per_core_at_15fps": 31.7
+   },
+   {
+    "resolution": "640x360",
+    "decode_fps_one_core": 972.2,
+    "cameras_per_core_at_15fps": 64.8
+   }
+  ],
+  "recording": {
+   "cameras": 8,
+   "stream": "960x540 H.264 15 fps 1.5 Mbit/s",
+   "mediamtx_relay_record_core_pct_total": 3.13,
+   "ffmpeg_segmenters_core_pct_total": 2.47,
+   "mediamtx_per_camera_core_pct": 0.39,
+   "ffmpeg_per_camera_core_pct": 0.31
+  }
+ },
+ "models": {
+  "onnxruntime": "1.29.0",
+  "runs": [
+   {
+    "model": "yolox_nano",
+    "input": "416x416",
+    "threads": 1,
+    "ms_median": 13.2,
+    "fps": 75.5,
+    "output_shape": [
+     1,
+     3549,
+     85
+    ]
+   },
+   {
+    "model": "yolox_nano",
+    "input": "416x416",
+    "threads": 2,
+    "ms_median": 8.8,
+    "fps": 113.4,
+    "output_shape": [
+     1,
+     3549,
+     85
+    ]
+   },
+   {
+    "model": "yolox_s",
+    "input": "640x640",
+    "threads": 1,
+    "ms_median": 197.0,
+    "fps": 5.1,
+    "output_shape": [
+     1,
+     8400,
+     85
+    ]
+   },
+   {
+    "model": "yolox_s",
+    "input": "640x640",
+    "threads": 2,
+    "ms_median": 108.5,
+    "fps": 9.2,
+    "output_shape": [
+     1,
+     8400,
+     85
+    ]
+   }
+  ],
+  "note": "COCO-pretrained YOLOX (Apache-2.0) on random input; timing only, no accuracy claim"
+ },
+ "alerts": {
+  "events": 600,
+  "tablets": 3,
+  "deliveries": 1800,
+  "expected": 1800,
+  "p50_ms": 2.33,
+  "p95_ms": 2.91,
+  "p99_ms": 3.82,
+  "max_ms": 25.07,
+  "feedback_ok": true,
+  "cashier_page_ok": true,
+  "labels_stored": 1
+ }
+}

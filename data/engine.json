@@ -1,0 +1,1210 @@
+{
+ "generated": "2026-11-13T00:56:51.499Z",
+ "protocol": {
+  "tuneHours": 30,
+  "testHours": 60,
+  "targetRecall": 0.85,
+  "fps": 10,
+  "tuneEvents": 142,
+  "testEvents": 257,
+  "shoppersPerHour": 60,
+  "concealRate": 0.08,
+  "simSecondsMain": 33.522999999999996
+ },
+ "main": {
+  "params": {
+   "t0Dwell": 1.2,
+   "t1Dwell": 0.5,
+   "t2Threshold": 0.83
+  },
+  "tune": {
+   "t0": {
+    "recall": 0.85,
+    "falsePerHour": 73.9,
+    "precision": 0.05,
+    "caught": 121,
+    "events": 142,
+    "alerts": 2338,
+    "hours": 30,
+    "leadExitMedian": 22.1,
+    "leadTillMedian": 8.73,
+    "beforeTillOrExit": 1,
+    "delayMedian": -0.23,
+    "byKind": {
+     "pocket": {
+      "n": 58,
+      "caught": 53
+     },
+     "waist": {
+      "n": 18,
+      "caught": 17
+     },
+     "chest": {
+      "n": 23,
+      "caught": 22
+     },
+     "bag": {
+      "n": 28,
+      "caught": 28
+     },
+     "fast": {
+      "n": 15,
+      "caught": 1
+     }
+    }
+   },
+   "t1": {
+    "recall": 0.86,
+    "falsePerHour": 4.93,
+    "precision": 0.45,
+    "caught": 122,
+    "events": 142,
+    "alerts": 270,
+    "hours": 30,
+    "leadExitMedian": 21.87,
+    "leadTillMedian": 7.73,
+    "beforeTillOrExit": 1,
+    "delayMedian": 0.63,
+    "byKind": {
+     "pocket": {
+      "n": 58,
+      "caught": 58
+     },
+     "waist": {
+      "n": 18,
+      "caught": 14
+     },
+     "chest": {
+      "n": 23,
+      "caught": 22
+     },
+     "bag": {
+      "n": 28,
+      "caught": 15
+     },
+     "fast": {
+      "n": 15,
+      "caught": 13
+     }
+    }
+   },
+   "t2": {
+    "recall": 0.85,
+    "falsePerHour": 0.27,
+    "precision": 0.94,
+    "caught": 121,
+    "events": 142,
+    "alerts": 129,
+    "hours": 30,
+    "leadExitMedian": 21.93,
+    "leadTillMedian": 7.73,
+    "beforeTillOrExit": 1,
+    "delayMedian": 0.6,
+    "byKind": {
+     "pocket": {
+      "n": 58,
+      "caught": 57
+     },
+     "waist": {
+      "n": 18,
+      "caught": 13
+     },
+     "chest": {
+      "n": 23,
+      "caught": 22
+     },
+     "bag": {
+      "n": 28,
+      "caught": 19
+     },
+     "fast": {
+      "n": 15,
+      "caught": 10
+     }
+    }
+   }
+  },
+  "test": {
+   "t0": {
+    "recall": 0.81,
+    "falsePerHour": 66.93,
+    "precision": 0.05,
+    "caught": 209,
+    "events": 257,
+    "alerts": 4225,
+    "hours": 60,
+    "leadExitMedian": 21.63,
+    "leadTillMedian": 8.27,
+    "beforeTillOrExit": 1,
+    "delayMedian": -0.23,
+    "byKind": {
+     "pocket": {
+      "n": 95,
+      "caught": 87
+     },
+     "waist": {
+      "n": 33,
+      "caught": 30
+     },
+     "chest": {
+      "n": 49,
+      "caught": 45
+     },
+     "bag": {
+      "n": 49,
+      "caught": 45
+     },
+     "fast": {
+      "n": 31,
+      "caught": 2
+     }
+    }
+   },
+   "t1": {
+    "recall": 0.87,
+    "falsePerHour": 4.63,
+    "precision": 0.45,
+    "caught": 224,
+    "events": 257,
+    "alerts": 502,
+    "hours": 60,
+    "leadExitMedian": 20.93,
+    "leadTillMedian": 7.13,
+    "beforeTillOrExit": 1,
+    "delayMedian": 0.67,
+    "byKind": {
+     "pocket": {
+      "n": 95,
+      "caught": 94
+     },
+     "waist": {
+      "n": 33,
+      "caught": 26
+     },
+     "chest": {
+      "n": 49,
+      "caught": 47
+     },
+     "bag": {
+      "n": 49,
+      "caught": 28
+     },
+     "fast": {
+      "n": 31,
+      "caught": 29
+     }
+    }
+   },
+   "t2": {
+    "recall": 0.87,
+    "falsePerHour": 0.28,
+    "precision": 0.93,
+    "caught": 223,
+    "events": 257,
+    "alerts": 240,
+    "hours": 60,
+    "leadExitMedian": 20.9,
+    "leadTillMedian": 7.03,
+    "beforeTillOrExit": 1,
+    "delayMedian": 0.67,
+    "byKind": {
+     "pocket": {
+      "n": 95,
+      "caught": 93
+     },
+     "waist": {
+      "n": 33,
+      "caught": 28
+     },
+     "chest": {
+      "n": 49,
+      "caught": 45
+     },
+     "bag": {
+      "n": 49,
+      "caught": 32
+     },
+     "fast": {
+      "n": 31,
+      "caught": 25
+     }
+    }
+   }
+  }
+ },
+ "curves": {
+  "t0": [
+   {
+    "param": 0.2,
+    "recall": 0.95,
+    "falsePerHour": 262.97
+   },
+   {
+    "param": 0.4,
+    "recall": 0.88,
+    "falsePerHour": 207.12
+   },
+   {
+    "param": 0.6,
+    "recall": 0.84,
+    "falsePerHour": 153.27
+   },
+   {
+    "param": 0.8,
+    "recall": 0.86,
+    "falsePerHour": 115.92
+   },
+   {
+    "param": 1,
+    "recall": 0.84,
+    "falsePerHour": 86.68
+   },
+   {
+    "param": 1.3,
+    "recall": 0.77,
+    "falsePerHour": 60.57
+   },
+   {
+    "param": 1.6,
+    "recall": 0.55,
+    "falsePerHour": 44.62
+   },
+   {
+    "param": 2,
+    "recall": 0.32,
+    "falsePerHour": 30.17
+   },
+   {
+    "param": 2.5,
+    "recall": 0.11,
+    "falsePerHour": 18.45
+   },
+   {
+    "param": 3,
+    "recall": 0.05,
+    "falsePerHour": 11.32
+   },
+   {
+    "param": 4,
+    "recall": 0.02,
+    "falsePerHour": 4.6
+   }
+  ],
+  "t1": [
+   {
+    "param": 0,
+    "recall": 0.9,
+    "falsePerHour": 17.8
+   },
+   {
+    "param": 0.1,
+    "recall": 0.9,
+    "falsePerHour": 13.98
+   },
+   {
+    "param": 0.2,
+    "recall": 0.89,
+    "falsePerHour": 10.42
+   },
+   {
+    "param": 0.3,
+    "recall": 0.88,
+    "falsePerHour": 7.58
+   },
+   {
+    "param": 0.4,
+    "recall": 0.88,
+    "falsePerHour": 5.85
+   },
+   {
+    "param": 0.6,
+    "recall": 0.84,
+    "falsePerHour": 4.07
+   },
+   {
+    "param": 0.8,
+    "recall": 0.77,
+    "falsePerHour": 2.88
+   },
+   {
+    "param": 1,
+    "recall": 0.72,
+    "falsePerHour": 1.82
+   },
+   {
+    "param": 1.3,
+    "recall": 0.62,
+    "falsePerHour": 0.5
+   },
+   {
+    "param": 1.6,
+    "recall": 0.42,
+    "falsePerHour": 0.28
+   },
+   {
+    "param": 2,
+    "recall": 0.19,
+    "falsePerHour": 0.05
+   }
+  ],
+  "t2": [
+   {
+    "param": 0.02,
+    "recall": 0.92,
+    "falsePerHour": 30.63
+   },
+   {
+    "param": 0.05,
+    "recall": 0.92,
+    "falsePerHour": 17.83
+   },
+   {
+    "param": 0.1,
+    "recall": 0.92,
+    "falsePerHour": 9.15
+   },
+   {
+    "param": 0.2,
+    "recall": 0.92,
+    "falsePerHour": 4.1
+   },
+   {
+    "param": 0.3,
+    "recall": 0.92,
+    "falsePerHour": 2.52
+   },
+   {
+    "param": 0.4,
+    "recall": 0.92,
+    "falsePerHour": 1.83
+   },
+   {
+    "param": 0.5,
+    "recall": 0.91,
+    "falsePerHour": 1.33
+   },
+   {
+    "param": 0.6,
+    "recall": 0.91,
+    "falsePerHour": 0.98
+   },
+   {
+    "param": 0.7,
+    "recall": 0.9,
+    "falsePerHour": 0.67
+   },
+   {
+    "param": 0.8,
+    "recall": 0.87,
+    "falsePerHour": 0.37
+   },
+   {
+    "param": 0.85,
+    "recall": 0.86,
+    "falsePerHour": 0.23
+   },
+   {
+    "param": 0.9,
+    "recall": 0.82,
+    "falsePerHour": 0.13
+   },
+   {
+    "param": 0.93,
+    "recall": 0.76,
+    "falsePerHour": 0.1
+   },
+   {
+    "param": 0.96,
+    "recall": 0.62,
+    "falsePerHour": 0.03
+   },
+   {
+    "param": 0.98,
+    "recall": 0.42,
+    "falsePerHour": 0
+   },
+   {
+    "param": 0.99,
+    "recall": 0.2,
+    "falsePerHour": 0
+   },
+   {
+    "param": 0.995,
+    "recall": 0.09,
+    "falsePerHour": 0
+   },
+   {
+    "param": 0.998,
+    "recall": 0.02,
+    "falsePerHour": 0
+   }
+  ]
+ },
+ "budgets": {
+  "1": {
+   "recall": 0.91,
+   "falsePerHour": 0.7,
+   "thr": 0.695575
+  },
+  "2": {
+   "recall": 0.92,
+   "falsePerHour": 1.37,
+   "thr": 0.4951
+  },
+  "0.5": {
+   "recall": 0.89,
+   "falsePerHour": 0.5,
+   "thr": 0.7376499999999999
+  },
+  "0.25": {
+   "recall": 0.86,
+   "falsePerHour": 0.23,
+   "thr": 0.863875
+  }
+ },
+ "ablation": {
+  "noHardNegatives": {
+   "recall": 0.87,
+   "falsePerHour": 0.4,
+   "precision": 0.9,
+   "caught": 223,
+   "events": 257,
+   "alerts": 247,
+   "hours": 60,
+   "leadExitMedian": 20.97,
+   "leadTillMedian": 7.13,
+   "beforeTillOrExit": 1,
+   "delayMedian": 0.67,
+   "byKind": {
+    "pocket": {
+     "n": 95,
+     "caught": 93
+    },
+    "waist": {
+     "n": 33,
+     "caught": 28
+    },
+    "chest": {
+     "n": 49,
+     "caught": 47
+    },
+    "bag": {
+     "n": 49,
+     "caught": 31
+    },
+    "fast": {
+     "n": 31,
+     "caught": 24
+    }
+   }
+  },
+  "noProvenanceOrMotion": {
+   "recall": 0.87,
+   "falsePerHour": 0.43,
+   "precision": 0.9,
+   "caught": 223,
+   "events": 257,
+   "alerts": 249,
+   "hours": 60,
+   "leadExitMedian": 20.97,
+   "leadTillMedian": 7.08,
+   "beforeTillOrExit": 1,
+   "delayMedian": 0.67,
+   "byKind": {
+    "pocket": {
+     "n": 95,
+     "caught": 92
+    },
+    "waist": {
+     "n": 33,
+     "caught": 28
+    },
+    "chest": {
+     "n": 49,
+     "caught": 46
+    },
+    "bag": {
+     "n": 49,
+     "caught": 32
+    },
+    "fast": {
+     "n": 31,
+     "caught": 25
+    }
+   }
+  },
+  "noClassEvidence": {
+   "recall": 0.84,
+   "falsePerHour": 1.93,
+   "precision": 0.65,
+   "caught": 216,
+   "events": 257,
+   "alerts": 332,
+   "hours": 60,
+   "leadExitMedian": 20.67,
+   "leadTillMedian": 7.08,
+   "beforeTillOrExit": 1,
+   "delayMedian": 0.67,
+   "byKind": {
+    "pocket": {
+     "n": 95,
+     "caught": 92
+    },
+    "waist": {
+     "n": 33,
+     "caught": 27
+    },
+    "chest": {
+     "n": 49,
+     "caught": 44
+    },
+    "bag": {
+     "n": 49,
+     "caught": 30
+    },
+    "fast": {
+     "n": 31,
+     "caught": 23
+    }
+   }
+  }
+ },
+ "detector": {
+  "pretrained": {
+   "t0": {
+    "recall": 0.86,
+    "falsePerHour": 98.58,
+    "precision": 0.04,
+    "caught": 221,
+    "events": 257,
+    "alerts": 6136,
+    "hours": 60,
+    "leadExitMedian": 21.77,
+    "leadTillMedian": 8.63,
+    "beforeTillOrExit": 1,
+    "delayMedian": -0.47,
+    "byKind": {
+     "pocket": {
+      "n": 95,
+      "caught": 90
+     },
+     "waist": {
+      "n": 33,
+      "caught": 33
+     },
+     "chest": {
+      "n": 49,
+      "caught": 47
+     },
+     "bag": {
+      "n": 49,
+      "caught": 47
+     },
+     "fast": {
+      "n": 31,
+      "caught": 4
+     }
+    }
+   },
+   "t1": {
+    "recall": 0.87,
+    "falsePerHour": 17.73,
+    "precision": 0.17,
+    "caught": 224,
+    "events": 257,
+    "alerts": 1288,
+    "hours": 60,
+    "leadExitMedian": 21.25,
+    "leadTillMedian": 7.33,
+    "beforeTillOrExit": 1,
+    "delayMedian": 0.63,
+    "byKind": {
+     "pocket": {
+      "n": 95,
+      "caught": 92
+     },
+     "waist": {
+      "n": 33,
+      "caught": 28
+     },
+     "chest": {
+      "n": 49,
+      "caught": 47
+     },
+     "bag": {
+      "n": 49,
+      "caught": 26
+     },
+     "fast": {
+      "n": 31,
+      "caught": 31
+     }
+    }
+   },
+   "t2": {
+    "recall": 0.84,
+    "falsePerHour": 0.55,
+    "precision": 0.87,
+    "caught": 216,
+    "events": 257,
+    "alerts": 249,
+    "hours": 60,
+    "leadExitMedian": 20.98,
+    "leadTillMedian": 7.33,
+    "beforeTillOrExit": 1,
+    "delayMedian": 0.63,
+    "byKind": {
+     "pocket": {
+      "n": 95,
+      "caught": 88
+     },
+     "waist": {
+      "n": 33,
+      "caught": 32
+     },
+     "chest": {
+      "n": 49,
+      "caught": 38
+     },
+     "bag": {
+      "n": 49,
+      "caught": 33
+     },
+     "fast": {
+      "n": 31,
+      "caught": 25
+     }
+    }
+   }
+  },
+  "finetuned": {
+   "t0": {
+    "recall": 0.81,
+    "falsePerHour": 66.93,
+    "precision": 0.05,
+    "caught": 209,
+    "events": 257,
+    "alerts": 4225,
+    "hours": 60,
+    "leadExitMedian": 21.63,
+    "leadTillMedian": 8.27,
+    "beforeTillOrExit": 1,
+    "delayMedian": -0.23,
+    "byKind": {
+     "pocket": {
+      "n": 95,
+      "caught": 87
+     },
+     "waist": {
+      "n": 33,
+      "caught": 30
+     },
+     "chest": {
+      "n": 49,
+      "caught": 45
+     },
+     "bag": {
+      "n": 49,
+      "caught": 45
+     },
+     "fast": {
+      "n": 31,
+      "caught": 2
+     }
+    }
+   },
+   "t1": {
+    "recall": 0.87,
+    "falsePerHour": 4.63,
+    "precision": 0.45,
+    "caught": 224,
+    "events": 257,
+    "alerts": 502,
+    "hours": 60,
+    "leadExitMedian": 20.93,
+    "leadTillMedian": 7.13,
+    "beforeTillOrExit": 1,
+    "delayMedian": 0.67,
+    "byKind": {
+     "pocket": {
+      "n": 95,
+      "caught": 94
+     },
+     "waist": {
+      "n": 33,
+      "caught": 26
+     },
+     "chest": {
+      "n": 49,
+      "caught": 47
+     },
+     "bag": {
+      "n": 49,
+      "caught": 28
+     },
+     "fast": {
+      "n": 31,
+      "caught": 29
+     }
+    }
+   },
+   "t2": {
+    "recall": 0.87,
+    "falsePerHour": 0.28,
+    "precision": 0.93,
+    "caught": 223,
+    "events": 257,
+    "alerts": 240,
+    "hours": 60,
+    "leadExitMedian": 20.9,
+    "leadTillMedian": 7.03,
+    "beforeTillOrExit": 1,
+    "delayMedian": 0.67,
+    "byKind": {
+     "pocket": {
+      "n": 95,
+      "caught": 93
+     },
+     "waist": {
+      "n": 33,
+      "caught": 28
+     },
+     "chest": {
+      "n": 49,
+      "caught": 45
+     },
+     "bag": {
+      "n": 49,
+      "caught": 32
+     },
+     "fast": {
+      "n": 31,
+      "caught": 25
+     }
+    }
+   }
+  }
+ },
+ "angle": {
+  "eyeTunedOnCeiling": {
+   "t0": {
+    "recall": 0.58,
+    "falsePerHour": 58.8,
+    "precision": 0.04,
+    "caught": 99,
+    "events": 172,
+    "alerts": 2451,
+    "hours": 40,
+    "leadExitMedian": 20.8,
+    "leadTillMedian": 8.33,
+    "beforeTillOrExit": 1,
+    "delayMedian": 0.03,
+    "byKind": {
+     "pocket": {
+      "n": 63,
+      "caught": 37
+     },
+     "waist": {
+      "n": 18,
+      "caught": 8
+     },
+     "chest": {
+      "n": 33,
+      "caught": 19
+     },
+     "bag": {
+      "n": 36,
+      "caught": 31
+     },
+     "fast": {
+      "n": 22,
+      "caught": 4
+     }
+    }
+   },
+   "t1": {
+    "recall": 0.65,
+    "falsePerHour": 3.28,
+    "precision": 0.46,
+    "caught": 112,
+    "events": 172,
+    "alerts": 243,
+    "hours": 40,
+    "leadExitMedian": 20.22,
+    "leadTillMedian": 7.67,
+    "beforeTillOrExit": 1,
+    "delayMedian": 0.6,
+    "byKind": {
+     "pocket": {
+      "n": 63,
+      "caught": 50
+     },
+     "waist": {
+      "n": 18,
+      "caught": 11
+     },
+     "chest": {
+      "n": 33,
+      "caught": 24
+     },
+     "bag": {
+      "n": 36,
+      "caught": 16
+     },
+     "fast": {
+      "n": 22,
+      "caught": 11
+     }
+    }
+   },
+   "t2": {
+    "recall": 0.91,
+    "falsePerHour": 2.42,
+    "precision": 0.62,
+    "caught": 156,
+    "events": 172,
+    "alerts": 253,
+    "hours": 40,
+    "leadExitMedian": 21.18,
+    "leadTillMedian": 7.67,
+    "beforeTillOrExit": 1,
+    "delayMedian": 0.6,
+    "byKind": {
+     "pocket": {
+      "n": 63,
+      "caught": 60
+     },
+     "waist": {
+      "n": 18,
+      "caught": 17
+     },
+     "chest": {
+      "n": 33,
+      "caught": 28
+     },
+     "bag": {
+      "n": 36,
+      "caught": 30
+     },
+     "fast": {
+      "n": 22,
+      "caught": 21
+     }
+    }
+   }
+  },
+  "ceilingAdaptedT2": {
+   "recall": 0.71,
+   "falsePerHour": 0.38,
+   "precision": 0.89,
+   "caught": 122,
+   "events": 172,
+   "alerts": 137,
+   "hours": 40,
+   "leadExitMedian": 20.95,
+   "leadTillMedian": 7.77,
+   "beforeTillOrExit": 1,
+   "delayMedian": 0.6,
+   "byKind": {
+    "pocket": {
+     "n": 63,
+     "caught": 51
+    },
+    "waist": {
+     "n": 18,
+     "caught": 14
+    },
+    "chest": {
+     "n": 33,
+     "caught": 26
+    },
+    "bag": {
+     "n": 36,
+     "caught": 23
+    },
+    "fast": {
+     "n": 22,
+     "caught": 8
+    }
+   }
+  },
+  "ceilingHours": 40
+ },
+ "fps": {
+  "5": {
+   "recall": 0.87,
+   "falsePerHour": 0.52,
+   "precision": 0.88,
+   "caught": 224,
+   "events": 257,
+   "alerts": 255,
+   "hours": 60,
+   "leadExitMedian": 20.7,
+   "leadTillMedian": 6.8,
+   "beforeTillOrExit": 1,
+   "delayMedian": 0.7,
+   "byKind": {
+    "pocket": {
+     "n": 95,
+     "caught": 91
+    },
+    "waist": {
+     "n": 33,
+     "caught": 30
+    },
+    "chest": {
+     "n": 49,
+     "caught": 45
+    },
+    "bag": {
+     "n": 49,
+     "caught": 33
+    },
+    "fast": {
+     "n": 31,
+     "caught": 25
+    }
+   },
+   "fast": {
+    "n": 31,
+    "caught": 25
+   }
+  },
+  "10": {
+   "recall": 0.87,
+   "falsePerHour": 0.28,
+   "precision": 0.93,
+   "caught": 223,
+   "events": 257,
+   "alerts": 240,
+   "hours": 60,
+   "leadExitMedian": 20.9,
+   "leadTillMedian": 7.03,
+   "beforeTillOrExit": 1,
+   "delayMedian": 0.67,
+   "byKind": {
+    "pocket": {
+     "n": 95,
+     "caught": 93
+    },
+    "waist": {
+     "n": 33,
+     "caught": 28
+    },
+    "chest": {
+     "n": 49,
+     "caught": 45
+    },
+    "bag": {
+     "n": 49,
+     "caught": 32
+    },
+    "fast": {
+     "n": 31,
+     "caught": 25
+    }
+   },
+   "fast": {
+    "n": 31,
+    "caught": 25
+   }
+  },
+  "15": {
+   "recall": 0.85,
+   "falsePerHour": 0.18,
+   "precision": 0.95,
+   "caught": 218,
+   "events": 257,
+   "alerts": 229,
+   "hours": 60,
+   "leadExitMedian": 20.87,
+   "leadTillMedian": 7.45,
+   "beforeTillOrExit": 1,
+   "delayMedian": 0.67,
+   "byKind": {
+    "pocket": {
+     "n": 95,
+     "caught": 87
+    },
+    "waist": {
+     "n": 33,
+     "caught": 32
+    },
+    "chest": {
+     "n": 49,
+     "caught": 45
+    },
+    "bag": {
+     "n": 49,
+     "caught": 32
+    },
+    "fast": {
+     "n": 31,
+     "caught": 22
+    }
+   },
+   "fast": {
+    "n": 31,
+    "caught": 22
+   }
+  }
+ },
+ "density": {
+  "120": {
+   "recall": 0.83,
+   "falsePerHour": 0.6,
+   "precision": 0.92,
+   "caught": 221,
+   "events": 265,
+   "alerts": 239,
+   "hours": 30,
+   "leadExitMedian": 20.4,
+   "leadTillMedian": 6.6,
+   "beforeTillOrExit": 1,
+   "delayMedian": 0.63,
+   "byKind": {
+    "pocket": {
+     "n": 99,
+     "caught": 88
+    },
+    "waist": {
+     "n": 40,
+     "caught": 36
+    },
+    "chest": {
+     "n": 45,
+     "caught": 43
+    },
+    "bag": {
+     "n": 49,
+     "caught": 29
+    },
+    "fast": {
+     "n": 32,
+     "caught": 25
+    }
+   }
+  },
+  "240": {
+   "recall": 0.79,
+   "falsePerHour": 1.27,
+   "precision": 0.91,
+   "caught": 406,
+   "events": 514,
+   "alerts": 444,
+   "hours": 30,
+   "leadExitMedian": 21.02,
+   "leadTillMedian": 8.03,
+   "beforeTillOrExit": 1,
+   "delayMedian": 0.67,
+   "byKind": {
+    "pocket": {
+     "n": 167,
+     "caught": 150
+    },
+    "waist": {
+     "n": 72,
+     "caught": 57
+    },
+    "chest": {
+     "n": 112,
+     "caught": 103
+    },
+    "bag": {
+     "n": 110,
+     "caught": 63
+    },
+    "fast": {
+     "n": 53,
+     "caught": 33
+    }
+   }
+  }
+ },
+ "feedback": [
+  {
+   "week": 0,
+   "recall": 0.87,
+   "falsePerHour": 0.4,
+   "labels": 632
+  },
+  {
+   "week": 1,
+   "recall": 0.86,
+   "falsePerHour": 0.33,
+   "labels": 685
+  },
+  {
+   "week": 2,
+   "recall": 0.87,
+   "falsePerHour": 0.25,
+   "labels": 728
+  },
+  {
+   "week": 3,
+   "recall": 0.87,
+   "falsePerHour": 0.2,
+   "labels": 777
+  },
+  {
+   "week": 4,
+   "recall": 0.87,
+   "falsePerHour": 0.18,
+   "labels": 830
+  },
+  {
+   "week": 5,
+   "recall": 0.87,
+   "falsePerHour": 0.18,
+   "labels": 866
+  },
+  {
+   "week": 6,
+   "recall": 0.87,
+   "falsePerHour": 0.18,
+   "labels": 912
+  }
+ ],
+ "features": [
+  "hold_s",
+  "dwell_s",
+  "product_ratio",
+  "from_shelf",
+  "from_body",
+  "moved_with_hand",
+  "visible_in_zone",
+  "zone_pocket",
+  "zone_waist",
+  "zone_chest",
+  "zone_bag",
+  "approach_speed",
+  "wrist_conf",
+  "basket_near",
+  "head_scan",
+  "object_conf"
+ ],
+ "weights": [
+  0.61,
+  0.82,
+  2.11,
+  0.14,
+  -0.15,
+  0.37,
+  -0.12,
+  -0.12,
+  0.13,
+  -0.11,
+  0.17,
+  -0.4,
+  -0.01,
+  -1.45,
+  0.36,
+  0.23
+ ],
+ "engineSpeed": {
+  "framesPerSec": 220714,
+  "msPerFrame": 0.0045,
+  "tracksPerFrame": 0.72
+ },
+ "runSeconds": 238.464
+}
